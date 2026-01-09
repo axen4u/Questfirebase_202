@@ -22,4 +22,13 @@ class DetailViewModel : ViewModel() {
         private val repository: RepositorySiswa = ContainerApp.getInstance().firebaseRepositorySiswa
         // ... uiState logic
     }
+    fun loadSiswaById(id: String) {
+        viewModelScope.launch {
+            val list = repository.getDataSiswa()
+            val siswa = list.find { it.id == id }
+            if (siswa != null) {
+                _uiState.value = siswa.toUIStateSiswa(isEntryValid = true)
+            }
+        }
+    }
 
