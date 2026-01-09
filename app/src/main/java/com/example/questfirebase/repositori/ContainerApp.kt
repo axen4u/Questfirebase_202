@@ -33,3 +33,7 @@ class ContainerApp private constructor() {
         // ... (getInstance logic)
     }
 }
+// File: FirebaseRepositorySiswa.kt
+class FirebaseRepositorySiswa(private val db: FirebaseFirestore) {
+    // Logic buat narik data atau manipulasi database ada di sini
+}
