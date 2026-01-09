@@ -16,3 +16,13 @@ class MainActivity : ComponentActivity() {
 // Perubahan:
 // - Tambahkan enableEdgeToEdge()
 // - Bungkus setContent dengan QuestFirebaseTheme
+
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    enableEdgeToEdge()
+    setContent {
+        QuestFirebaseTheme {
+            // Content goes here
+        }
+    }
+}
