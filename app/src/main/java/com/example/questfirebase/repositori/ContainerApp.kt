@@ -1,22 +1,23 @@
-package com.example.questfirebase.repositori
+// File: ContainerApp.kt
+package com.example.myfirebase.repositori
 
-import android.app.Application
+import com.google.firebase.firestore.FirebaseFirestore
 
-interface ContainerApp {
-    val repositorySiswa: RepositorySiswa
+class ContainerApp {
+    // Menyiapkan landasan buat Firestore
+    protected val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 }
 
-class DefaultContainerApp : ContainerApp {
-    override val repositorySiswa: RepositorySiswa by lazy {
-        FirebaseRepositorySiswa()
-    }
-}
+class ContainerApp private constructor() { // Private constructor biar gak sembarangan di-init
 
-class AplikasiDataSiswa : Application() {
-    lateinit var container: ContainerApp
+    companion object {
+        @Volatile
+        private var instance: ContainerApp? = null
 
-    override fun onCreate() {
-        super.onCreate()
-        container = DefaultContainerApp()
+        fun getInstance(): ContainerApp {
+            return instance ?: synchronized(this) {
+                instance ?: ContainerApp().also { instance = it }
+            }
+        }
     }
 }
