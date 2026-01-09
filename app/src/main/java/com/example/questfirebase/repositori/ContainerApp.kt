@@ -37,3 +37,21 @@ class ContainerApp private constructor() {
 class FirebaseRepositorySiswa(private val db: FirebaseFirestore) {
     // Logic buat narik data atau manipulasi database ada di sini
 }
+// Final ContainerApp structure
+class ContainerApp private constructor() {
+    private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+    val firebaseRepositorySiswa: FirebaseRepositorySiswa by lazy {
+        FirebaseRepositorySiswa(firestore)
+    }
+
+    companion object {
+        @Volatile
+        private var instance: ContainerApp? = null
+
+        fun getInstance(): ContainerApp =
+            instance ?: synchronized(this) {
+                instance ?: ContainerApp().also { instance = it }
+            }
+    }
+}
