@@ -4,12 +4,27 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.myfirebase.repositori.RepositorySiswa
 
-class PenyediaViewModel(private val repository: RepositorySiswa) : ViewModelProvider.Factory {
-    // File: PenyediaViewModel.kt (Step 2)
+/**
+ * PenyediaViewModel - Rezx AI Factory Edition 😹
+ * Mastermind yang nyuntikin Repository ke semua ViewModel lu.
+ */
+class PenyediaViewModel(
+    private val repository: RepositorySiswa
+) : ViewModelProvider.Factory {
+
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return DetailViewModel(repository) as T
+        return when {
+            modelClass.isAssignableFrom(DetailViewModel::class.java) ->
+                DetailViewModel(repository) as T
+
+            modelClass.isAssignableFrom(EditViewModel::class.java) ->
+                EditViewModel(repository) as T
+
+            modelClass.isAssignableFrom(EntryViewModel::class.java) ->
+                EntryViewModel(repository) as T
+
+            else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name} 🗿")
         }
-        // ...
     }
+}
