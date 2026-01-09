@@ -11,3 +11,6 @@ import com.example.myfirebase.repositori.RepositorySiswa
 
 class EntryViewModel(private val repositorySiswa: RepositorySiswa) : ViewModel() {
 
+    // File: EntryViewModel.kt (Part 2)
+    var uiStateSiswa by mutableStateOf(UIStateSiswa())
+        private set
