@@ -13,3 +13,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+// Perubahan:
+// - Tambahkan enableEdgeToEdge()
+// - Bungkus setContent dengan QuestFirebaseTheme
