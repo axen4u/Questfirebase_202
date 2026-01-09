@@ -17,3 +17,9 @@ class DetailViewModel : ViewModel() {
     private val _uiState = MutableStateFlow<UIStateSiswa>(UIStateSiswa())
     val uiState: StateFlow<UIStateSiswa> = _uiState
 
+    // File: DetailViewModel.kt (Part 2)
+    class DetailViewModel : ViewModel() {
+        private val repository: RepositorySiswa = ContainerApp.getInstance().firebaseRepositorySiswa
+        // ... uiState logic
+    }
+
