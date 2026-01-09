@@ -32,5 +32,13 @@ class EditViewModel(
             detailSiswa = newDetailSiswa,
             isEntryValid = validateInput(newDetailSiswa)
         )
+// File: EditViewModel.kt (Part 3)
+        init {
+            viewModelScope.launch {
+                val siswa = repositorySiswa.getSatuSiswa(siswaId)
+                if (siswa != null) {
+                    siswaUiState = siswa.toUIStateSiswa(true)
+                }
+
 
 
