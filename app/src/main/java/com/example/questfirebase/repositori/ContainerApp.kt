@@ -21,3 +21,15 @@ class ContainerApp private constructor() { // Private constructor biar gak semba
         }
     }
 }
+class ContainerApp private constructor() {
+    // Inisialisasi repository siswa yang bakal handle data
+    val firebaseRepositorySiswa: FirebaseRepositorySiswa by lazy {
+        FirebaseRepositorySiswa(firestore)
+    }
+
+    companion object {
+        @Volatile
+        private var instance: ContainerApp? = null
+        // ... (getInstance logic)
+    }
+}
