@@ -23,5 +23,14 @@ class EditViewModel(
     private val siswaId: String = checkNotNull(
         savedStateHandle[DestinasiNavigasi.Edit.ARG_ID]
     )
+    // File: EditViewModel.kt (Part 2)
+    var siswaUiState by mutableStateOf(UIStateSiswa())
+        private set
+
+    fun updateUiState(newDetailSiswa: DetailSiswa) {
+        siswaUiState = UIStateSiswa(
+            detailSiswa = newDetailSiswa,
+            isEntryValid = validateInput(newDetailSiswa)
+        )
 
 
