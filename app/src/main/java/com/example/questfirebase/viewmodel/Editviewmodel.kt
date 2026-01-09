@@ -39,6 +39,11 @@ class EditViewModel(
                 if (siswa != null) {
                     siswaUiState = siswa.toUIStateSiswa(true)
                 }
-
+                // File: EditViewModel.kt (Part 4)
+                private fun validateInput(uiState: DetailSiswa): Boolean {
+                    return with(uiState) {
+                        nama.isNotBlank() && alamat.isNotBlank() && telpon.isNotBlank()
+                    }
+                }
 
 
